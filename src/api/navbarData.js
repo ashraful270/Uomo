@@ -1,0 +1,32 @@
+export const navitems =[
+    {
+        id: 1,
+        name:"HOME",
+        url:"/",
+    },
+    {
+        id: 2,
+        name:"SHOP",
+        url:"/shop",
+        type: "mega",
+    },
+    {
+        id: 3,
+        name:"COLLECTION",
+    },
+    {
+        id: 4,
+        name:"JOURNAL",
+        type: "blog-mega",
+    },
+    {
+        id: 5,
+        name:"LOOKBOOK",
+        url:"/lookbook",
+    },
+    {
+        id: 6,
+        name:"PAGES",
+        type: "pages-mega"
+    },
+]

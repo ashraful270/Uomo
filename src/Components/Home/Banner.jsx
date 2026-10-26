@@ -1,0 +1,68 @@
+import React from 'react'
+import Image from '../common/Image'
+import { bannerData } from '../../api/bannerData'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import { FaFacebookF, FaInstagram, FaPinterest } from 'react-icons/fa'
+import { FaXTwitter } from "react-icons/fa6";
+
+const Banner = () => {
+
+    var settings = {
+    dots: true,
+    arrows:false,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    appendDots: dots => (
+      <div>
+        <ul className='flex absolute bottom-[3%] left-[3%] md:bottom-13 md:left-[7%] min-[1470px]:left-47.5' style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    // the whole <li> area is clickable (size comes from the .uomo-dots rules in index.css)
+    customPaging: () => (
+      <div className='w-full h-full flex justify-center items-center cursor-pointer'>
+        <span className='block w-1.5 h-1.5 bg-[#DDC2B9] rounded-full'></span>
+      </div>
+    )
+    };
+
+  return (
+    <>
+    {/* max width keeps the banner from growing too tall on very large screens */}
+    <section id='banner' className='uomo-dots relative w-full max-w-480 mx-auto overflow-hidden mt-15 md:mt-20'>
+
+      {/* social icons: shown only from xl, where the side margin is wide enough */}
+      <div className='hidden xl:flex absolute -left-4 top-1/2 -translate-y-1/2 font-normal flex-col items-center gap-6 text-secondColor text-sm z-10'>
+          <FaFacebookF className='hover:text-blue-500' />
+          <FaXTwitter />
+          <FaInstagram className='hover:text-pink-600' />
+          <FaPinterest className='hover:text-red-600' />
+        <div className="-rotate-90 font-jost font-medium leading-6 mt-4.5">
+          FOLLOW US 
+        </div>
+      </div>
+
+      {/* scroll hint: shown only from xl */}
+      <div className='hidden xl:flex absolute -right-1 bottom-0 flex-col items-center gap-5 z-10'>
+        <div className="-rotate-90 font-jost font-medium text-sm leading-6 text-primary-black">
+          SCROLL
+        </div>
+        <div className="w-0.5 h-7.5 bg-primary-black"></div>
+      </div>
+
+      <div className="w-full md:w-[95%] mx-auto">
+        <Slider {...settings}>
+            {bannerData?.map((item)=>(
+                <Image className={"text-center w-full h-auto"} key={item.id} src={item.banner} alt="banner" />
+            ))}
+        </Slider>
+      </div>
+    </section>
+    </>
+  )
+}
+
+export default Banner
